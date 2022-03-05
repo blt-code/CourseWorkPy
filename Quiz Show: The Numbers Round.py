@@ -1,5 +1,3 @@
-### UNFINISHED
-
 import random
 import itertools
 
@@ -31,36 +29,34 @@ while i < n_small:
     small_ings.append(pick)
     i+=1
 
-ings = large_ings + small_ings
+ings = tuple(large_ings + small_ings)
 print(f'Ingredients: {ings}')
 
-
-### HERE DOWN IS UNFINISHED
 # Gather operation permutations with repitition
 
 operations = ('*','+','/','-')
 
 j = 1
-opPerms = []
+op_perms = []
 while j < 6:
     for i in itertools.product(operations, repeat = j):
-        opPerms.append(i)
+        op_perms.append(i)
     j += 1
 
 # Gather ingredients permutations without repitition
 
 j = 2
-numPerms = []
+num_perms = []
 while j <= 6:
     for i in itertools.permutations(ings, j):
-        numPerms.append(i)
+        num_perms.append(i)
     j += 1
 
 # Weave together ingredients and operations permutations
 
 perms = []
-for nums in numPerms:
-    for ops in opPerms:
+for nums in num_perms:
+    for ops in op_perms:
         if len(nums) == len(ops)+1:
             nums = list(nums)
             ops = list(ops)
